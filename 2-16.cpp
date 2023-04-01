@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-#include <windows.h>
 
 using namespace std;
 
@@ -16,7 +15,7 @@ int main() {
 	cout << "텍스트의 끝은 ; 입니다. 10000개까지 가능합니다." << endl;
 	cin.getline(buf, 10000, ';');
 
-	for (char j = 'a'; j < 'z' + 1; j++) {
+	for(char j = 'a'; j < 'z'+1; j++) {
 		int count = 0;
 		for (int i = 0; i < 10000; i++) {
 			if (buf[i] > 64 && buf[i] < 91) {
@@ -25,17 +24,11 @@ int main() {
 			if (buf[i] == j) {
 				count++;
 			}
-			if(i == 9999 && count > 9){
-				cout << j << "(" << count << ")  : ";
-				print(count);
-				cout << endl;
-			}
-			else if(i == 9999 && count <=9) {
-				cout << j << "(" << count << ")   : ";
-				print(count);
-				cout << endl;
-			}
+			cout << j << "[" << count << "] : " << print(count) << endl;
 		}
 	}
-	Sleep(100000);
+	
+
+
+
 }
