@@ -4,7 +4,6 @@ using namespace std;
 
 int main() {
 	//°´Ã¼¸¦ Èü¿¡ µ¿ÀûÀ¸·Î »ı¼º
-
 	WordGame* game;
 	game = new WordGame("³¡¸»ÀÕ±â °ÔÀÓ", "¾Æ¹öÁö");
 	game->run();

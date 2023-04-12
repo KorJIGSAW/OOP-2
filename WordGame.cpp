@@ -7,7 +7,7 @@ using namespace std;
 WordGame::WordGame(string title, string startWord) {
 	this->title = title;
 	this->startWord = startWord;
-	this->players = NULL; //질문
+	this->players = NULL; //코드 오류를 줄이기 위해 일반적으로 초기화한다.
 }
 
 WordGame::~WordGame() {
@@ -15,12 +15,16 @@ WordGame::~WordGame() {
 }
 
 bool WordGame::createPlayers() {
-	cout << "끝말 잇기 게임을 시zw작합니다" << endl;
+	cout << "끝말 잇기 게임을 시작합니다" << endl;
 	cout << "게임에 참가하는 인원은 몇명입니까? >> ";
 	int n;
 	cin >> n;
 	nPlayers = n;
 	players = new Player[n];
+
+	if (!players) {
+		return false;
+	}
 
 	string playerName;
 	for (int i = 0; i < n; i++) {
@@ -33,9 +37,11 @@ bool WordGame::createPlayers() {
 }
 
 void WordGame::run() {
-	createPlayers();
+	if (!createPlayers()) {
+		return;
+	}
 	string lastWord = startWord;
-	cout << "시작 단어는" + lastWord + "입니다" << endl;
+	cout << "시작 단어는 " + lastWord + "입니다" << endl;
 
 	int next = 0;
 	while (true) {
